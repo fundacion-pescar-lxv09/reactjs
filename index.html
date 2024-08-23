@@ -17,40 +17,47 @@
     <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
     <script>
-        ReactDOM.createRoot(document.getElementById('root'))
-        .render(
-            React.createElement( // Creacion de Nodo
-                'section', // Elemento
-                {className: "card"}, // Propiedades
-                [React.createElement(
-                    "h2", // Elemento
-                    {className: "card-header"}, // Propiedades
-                    "Acciones"// Contenido / Hijos
-                ),
-                React.createElement (
-                    "div",
-                    {className: "btn-group"},
-                    [ // Contenido / Hijos
-                    React.createElement(
-                        "button", // Elemento
-                        {className: "btn btn-primary"}, // Propiedades
-                        "like"// Contenido / Hijos
-                    ),
-                    React.createElement(
-                        "button", // Elemento
-                        {className: "btn btn-danger"}, // Propiedades
-                        "dislike"// Contenido / Hijos
-                    ),
-                    React.createElement(
-                        "button", // Elemento
-                        {className: "btn btn-dark"}, // Propiedades
-                        "sad"// Contenido / Hijos
-                    )
-                    ]
-                    )
-                ]
-            )
-        )
+        // Lambda Component
+        const Button = (color, children) => React.createElement('button', {className: "btn btn-"+color}, children)
+        // Function COmponent
+        function BtnGroup(...args){
+            return React.createElement('div', 
+            {className: "card-body btn-group"}, 
+            [...args]
+        )}
+        // Class Component
+        class Section {
+            constructor(title, body){
+                this.title = title,
+                this.body = body
+            }
+            render(){
+                const header = React.createElement(
+                    "h2", 
+                    {className: "card-header"}, 
+                    this.title
+                )
+                const section = React.createElement(
+                    'section', 
+                    {className: "card container my-3 mx-auto p-0"}, 
+                    [header, this.body]
+                )
+                return section
+            }
+            
+        }
+        // Instancia de Section
+        const section = new Section(
+            'Acciones', 
+            BtnGroup(
+                Button("primary","like"),
+                Button('danger', "dislike"),
+                Button('dark','sad')
+        ))
+        // Renderizado
+        ReactDOM.createRoot(
+            document.getElementById('root') // Elemento Raiz
+        ).render(section.render()) // Dibujado en la 
     </script>
 </body>
 </html>
