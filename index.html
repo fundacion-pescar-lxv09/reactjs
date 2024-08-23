@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Vanilla</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <noscript>
+            ¡¡¡Habilita JavaScript o vas a ver ✊✊✊✊✊✊!!!
+            <br>
+            ...vas a ver que no funciona la aplicacion
+    </noscript>
+    <div id="root"></div>
+    <!-- Bibliotecas react react-dom -->
+    <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+    <script>
+        ReactDOM.createRoot(document.getElementById('root'))
+        .render(
+            React.createElement( // Creacion de Nodo
+                'section', // Elemento
+                {className: "card"}, // Propiedades
+                [React.createElement(
+                    "h2", // Elemento
+                    {className: "card-header"}, // Propiedades
+                    "Acciones"// Contenido / Hijos
+                ),
+                React.createElement (
+                    "div",
+                    {className: "btn-group"},
+                    [ // Contenido / Hijos
+                    React.createElement(
+                        "button", // Elemento
+                        {className: "btn btn-primary"}, // Propiedades
+                        "like"// Contenido / Hijos
+                    ),
+                    React.createElement(
+                        "button", // Elemento
+                        {className: "btn btn-danger"}, // Propiedades
+                        "dislike"// Contenido / Hijos
+                    ),
+                    React.createElement(
+                        "button", // Elemento
+                        {className: "btn btn-dark"}, // Propiedades
+                        "sad"// Contenido / Hijos
+                    )
+                    ]
+                    )
+                ]
+            )
+        )
+    </script>
+</body>
+</html>
