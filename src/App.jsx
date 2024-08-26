@@ -1,4 +1,4 @@
-import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 // Modelos de datos
 import { heading } from './models/heading'
 import { links, social } from './models/links'
@@ -13,7 +13,7 @@ function App() {
     <Nav links={links} />{/* Asignacion de Propiedades */}
     <Header {...heading}/> {/* Herencia de Propiedades */}
     <Footer>{/* Propiedad children */}
-      <ul>
+      <ul className="list-unstyled d-flex justify-content-center gap-2">
         {social.map((item,i) => <Link key={i} {...item}/>)}
       </ul>
     </Footer>

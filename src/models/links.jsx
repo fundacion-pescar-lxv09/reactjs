@@ -5,7 +5,7 @@ export const links = [
   { id: "c28", url: "#contact", text: "contacto" },
 ]
 export const social = [
-  {id: "", url: "https://facebook.com", text: "facebook"},
-  {id: "", url: "https://instagram.com", text: "instagram"},
-  {id: "", url: "https://api.whatsapp.com/send?phone=1103034567&text=mensaje,por+whatsapp", text: "whatsapp"}
+  {target: "_blank", url: "https://facebook.com", text: "facebook"},
+  {target: "_blank", url: "https://instagram.com", text: "instagram"},
+  {target: "_blank", url: "https://api.whatsapp.com/send?phone=1103034567&text=mensaje,por+whatsapp", text: "whatsapp"}
 ]

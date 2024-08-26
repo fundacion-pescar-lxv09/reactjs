@@ -1,8 +1,5 @@
 export const Footer = ({children}) => 
-<footer>
+<footer className="p-3 text-center">
     { children }
-    <p> 
-        &copy;{Date().toLocaleString()} 
-        Todos los derechos reservados
-    </p>
+    <p> &copy;{new Date().getFullYear()} Todos los derechos reservados</p>
 </footer>
