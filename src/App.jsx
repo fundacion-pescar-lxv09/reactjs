@@ -1,23 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-// Modelos de datos
-import { heading } from './models/heading'
-import { links, social } from './models/links'
-// Componentes
-import Header from './components/Header'
-import Nav, { Link } from  './components/Nav'
-import { Footer } from './components/Footer'
+import './App.css'
+
+import { useState, Fragment } from 'react'
+import { Numbers } from './components/utils'
+import Square from './components/Square'
 
 function App() {
+  const squares = Numbers(1,9);
+  const [player, setPlayer] = useState("O")
+  const changePlayer = () => setPlayer(player==="X"?"O":"X")
   return (
-    <>{/* Fragmento (Etiqueta vacia)*/}
-    <Nav links={links} />{/* Asignacion de Propiedades */}
-    <Header {...heading}/> {/* Herencia de Propiedades */}
-    <Footer>{/* Propiedad children */}
-      <ul className="list-unstyled d-flex justify-content-center gap-2">
-        {social.map((item,i) => <Link key={i} {...item}/>)}
-      </ul>
-    </Footer>
-    </>
+    <div>
+      <h1>Ta-Te-Ti</h1>
+      { squares.map(s => 
+        <>
+          <Square value={player} callback={changePlayer}/>
+          { s % 3 == 0 && <hr/> }
+        </>
+      )}
+    </div>
   )
 }
 
