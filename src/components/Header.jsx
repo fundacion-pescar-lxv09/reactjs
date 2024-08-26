@@ -7,9 +7,9 @@ class Header extends Component{
     render(){
         const { title, subtitle, size } = this.props
         return(
-            <header className={"h"+size}>
-                <h1>Bienvenido {title}</h1>
-                <p>{subtitle}</p>
+            <header className="text-center">
+                <h1 className={"display-"+size}>Bienvenido {title}</h1>
+                <p className={"h"+(size < 6 ? size + 1 : size)}>{subtitle}</p>
             </header>
         )
     }
