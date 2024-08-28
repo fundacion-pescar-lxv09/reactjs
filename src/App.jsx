@@ -1,36 +1,39 @@
 import './App.css'
 
 import { useEffect, useState } from 'react'
-// Componente
+// Componentes
 import Player from './components/Player'
-import Square from './components/Square'
-import { GameStart, isWinner } from './controllers/Game';
+import Board from './components/Board'
+// Controladores
+import { GameStart, setBoard } from './controllers/Game';
+import { isDraw, isWinner } from './controllers/Player';
 
 function App() {
+  // Estado de la Aplicacion
   const [game, setGame] = useState(GameStart())
-
+  // Reinicio de Estado
+  const resetGame = () => setGame(GameStart())
+  // Actualizacion parcial del Estado
   const changePlayer = (r,c) => {
+    // Extraccion de Propiedades
     const {message, currentPlayer:a, nextPlayer:b} = game
     !message && setGame({
       ...game, currentPlayer: b,nextPlayer: a,
-      board: game.board.map((row,ri) => row.map((col, ci) => r == ri && c == ci ? a : col))
-    })
-  }
-  const resetGame = () => setGame(GameStart())
-
+      board: setBoard(game.board, r, c, a)
+  })}
+  // Equivalente de ComponentDidUpdate
   useEffect(() => {
+    // Funcion de actualizacion
     const [{board:b, nextPlayer:p}, gameState ] = [ game, "finished"];
     if(isWinner(b,p)) setGame({...game, message:"Ganador "+p, gameState})
-    else{
-      const isDraw = b.map((row) => row.every(col => col !== "")).every(row => row !== false)
-      isDraw && setGame({...game, message:"Empate", gameState})}
-  }, [game.board])
+    else isDraw(b) && setGame({...game, message:"Empate", gameState})
+  }, [game.board]) // Observacion de Cambios externos
+  // Renderizado de la aplicacion
   return (
     <div className="game">
       <h1 className="game-header">Ta-Te-Ti</h1>
       <Player {...game}/>
-      { game.board.map((row,ridx) => row.map((col, cidx) => <Square key={`${ridx}${cidx}`}value={game.currentPlayer} callback={changePlayer} row={ridx} col={cidx} message={game.message}/>)
-      )}
+      <Board callback={changePlayer} {...game}/>
       <button className="game-header" onClick={resetGame}>Iniciar Partida</button>
     </div>
   )
