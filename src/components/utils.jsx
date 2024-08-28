@@ -1,4 +1,7 @@
-export const Numbers = (ini, fin, arr=[]) => {
-  for(let i = ini; i <= fin; i++) arr.push(i)
+export const Numbers = (rows=3, cols=3, arr=[]) => {
+  for(let ridx = 0; ridx < rows; ridx++){
+    arr.push([]);
+    for (let cidx = 0; cidx < cols; cidx++) arr[ridx].push("");
+  }
   return arr;
 }
