@@ -47,4 +47,4 @@ Si el montaje es la primera fase del ciclo de vida de un componente, el desmonta
 
 render es el método más importante de los ciclos de vida y el único requerido en cualquier componente. Es usualmente llamado cada vez que el estado del componente es actualizado, reflejando los cambios en la interfaz de usuario.
 
-[volver a pagina principal](../readme.md)
+[volver](../readme.md)

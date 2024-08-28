@@ -7,3 +7,4 @@ React es la __Vista__ en un contexto en el que se use el __patrón MVC (Modelo-V
 ## Tabla de contenidos
 * [Caracteristicas Generales](./docs/general.md)
 * [Ciclo de Vida de Componentes](./docs/lifecycle.md)
+* [Funciones de Manipulacion](./docs/hooks.md)

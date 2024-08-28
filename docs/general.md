@@ -69,4 +69,4 @@ También conocidas como __props__ pueden definirse como los _atributos de config
 
 Se define como una __representación en un momento concreto__, es decir, _una instantánea del propio componente_. Existen dos tipos de componentes __stateful (con Estado) y stateless (Sin Estado)__ y a diferencia de las props, este es mutable.
 
-[volver a pagina principal](../readme.md)
+[volver](../readme.md)
