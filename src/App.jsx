@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 import { useState, Fragment } from 'react'
@@ -10,12 +10,11 @@ function App() {
   const [player, setPlayer] = useState("O")
   const changePlayer = () => setPlayer(player==="X"?"O":"X")
   return (
-    <div>
-      <h1>Ta-Te-Ti</h1>
+    <div className="game">
+      <h1 className="game-header">Ta-Te-Ti</h1>
       { squares.map(s => 
         <>
           <Square value={player} callback={changePlayer}/>
-          { s % 3 == 0 && <hr/> }
         </>
       )}
     </div>
