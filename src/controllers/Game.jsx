@@ -1,9 +1,10 @@
-export const GameStart = () => ({
+import { Numbers } from "../components/utils"
+
+export const GameStart = (a ="X", b="O") => ({
     gameState: "running",
-    currentPlayer: "O",
-    nextPlayer: "X",
-    winner: '',
-    board: [["","",""],["","",""],["","",""]],
+    currentPlayer: a,
+    nextPlayer: b,
+    board: Numbers(),
     message: ""
 })
 export const check = (arr, player) => arr.every(item => item !== "" && item === player)
