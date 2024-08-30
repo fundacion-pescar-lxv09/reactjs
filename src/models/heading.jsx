@@ -1,5 +1,5 @@
 export const heading = {
-    title: "ReactJS", 
-    subtitle:"Desarrollo de Interfaces con JSX",
+    title: "al Sitio", 
+    subtitle:"Tabla de Usuarios",
     size: 3
 }
