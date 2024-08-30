@@ -1,22 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useState, useEffect } from 'react'
 // Modelos de datos
 import { heading } from './models/heading'
-import { links, social } from './models/links'
+import { social, jph, jphLinks } from './models/links'
+import { Request } from './controllers/Request'
 // Componentes
 import Header from './components/Header'
-import Nav, { Link } from  './components/Nav'
-import { Footer } from './components/Footer'
+import Table from './components/Table'
+import Loading from "./components/Loading"
 
 function App() {
+  const [url, setUrl] = useState(jph+jphLinks[0].url)
+  const [data, setData] = useState([])
+
+  useEffect(() => { 
+    Request(url).then(({data}) => setData(data))
+  }, [url])
+
   return (
-    <>{/* Fragmento (Etiqueta vacia)*/}
-    <Nav links={links} />{/* Asignacion de Propiedades */}
-    <Header {...heading}/> {/* Herencia de Propiedades */}
-    <Footer>{/* Propiedad children */}
-      <ul className="list-unstyled d-flex justify-content-center gap-2">
-        {social.map((item,i) => <Link key={i} {...item}/>)}
-      </ul>
-    </Footer>
+    <>
+    <Header {...heading}/> 
+    { data?.length ? <Table {...data} /> : <Loading/> 
+    }
     </>
   )
 }
