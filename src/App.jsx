@@ -10,20 +10,18 @@ import Table from './components/Table'
 import Loading from "./components/Loading"
 
 function App() {
-  const [url, setUrl] = useState(jph+jphLinks[0].url)
-  const [data, setData] = useState([])
-
+  const [state, setState] = useState({ url: jph+jphLinks[0].url, data: []})
   useEffect(() => { 
-    Request(url).then(({data}) => setData(data))
-  }, [url])
-
+    Request(state?.url)
+    .then(({data}) => setState({...state, data}))
+  }, [state.url])
   return (
     <>
-    <Header {...heading}/> 
-    { data?.length ? <Table {...data} /> : <Loading/> 
-    }
+      <Header {...heading} subtitle={"Tabla de "+jphLinks[0].text}/> 
+      <section className="overflow-auto">
+        { state?.data?.length ? <Table data={state?.data}/> : <Loading/> }
+      </section>
     </>
   )
 }
-
 export default App

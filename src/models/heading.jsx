@@ -1,5 +1,4 @@
 export const heading = {
-    title: "al Sitio", 
-    subtitle:"Tabla de Usuarios",
+    title: "al Sitio",
     size: 3
 }
