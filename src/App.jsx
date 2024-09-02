@@ -9,6 +9,9 @@ import { Request } from './controllers/Request'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import Table from './components/Table'
+import Form from './components/Form'
+import Article from './components/Article'
+import List from './components/List'
 import Loading from './components/Loading'
 import NotFound from './components/NotFound'
 
@@ -28,12 +31,14 @@ function App() {
     <Router>
       <Nav links={newLinks()} {...{fn:setUrl, host:jph}}/>
       <Header {...heading} subtitle={"Tabla de "+jphLinks[0].text}/>       
-      <section className="overflow-auto">{ 
+      <section className="container | row p-0 | overflow">{ 
       state?.data?.length ?
       <Routes>
         <Route path="table/:table" element={<Table data={state?.data}/>}/>
         <Route path="article/:table" element={<Article data={state?.data}/>}/>
-        <Route path="list/:table" element={<List data={state?.data}/>}/>
+        <Route path="list/:table" element={
+          <List data={state?.data}/>
+        }/>
         <Route path="form/:table" element={<Form data={state?.data}/>}/>
         <Route path="/" element={<h2>Bienvenido</h2>}/>
         <Route path="*" element={<NotFound/>}/>
