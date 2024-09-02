@@ -21,9 +21,9 @@ function App() {
   useEffect(() => { 
     Request(state?.url)
     .then(({data}) => setData(data))
+    .catch((error) => setData(error))
   }, [state?.url])
 
-  console.log(newLinks(), jphLinks)
   return (
     <Router>
       <Nav links={newLinks()} {...{fn:setUrl, host:jph}}/>
@@ -32,10 +32,11 @@ function App() {
       state?.data?.length ?
       <Routes>
         <Route path="table/:table" element={<Table data={state?.data}/>}/>
-        <Route path="*" element={<NotFound/>}/>
-        {/* <Route path="article/:table" element={<Article data={state?.data}/>}/>
+        <Route path="article/:table" element={<Article data={state?.data}/>}/>
         <Route path="list/:table" element={<List data={state?.data}/>}/>
-        <Route path="form/:table" element={<Form data={state?.data}/>}/> */}
+        <Route path="form/:table" element={<Form data={state?.data}/>}/>
+        <Route path="/" element={<h2>Bienvenido</h2>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>:<Loading/> }
       </section>
     </Router>
