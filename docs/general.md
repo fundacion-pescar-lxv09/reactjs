@@ -4,9 +4,9 @@
 
 1. [Declarativo](#declarativo)
 1. [Componentes](#componentes)
-    * [class](#class-component)
-    * [function](#function-component)
-    * [lambda](#lambda-component)
+    * class
+    * function
+    * lambda
 1. [multiplataforma](#multiplataforma)
 1. [Virtual DOM](#virtual-dom)
 1. [Propiedades](#propiedades)
@@ -20,38 +20,26 @@ Permite crear interfaces de usuario interactivas de forma sencilla, ya que se en
 
 La encapsulacion permite que los elementos manejen su propio estado, creando interfaces de usuario complejas. Como la logica esta escrita en JavaScript y no en plantillas, se pueden pasar datos a través de la aplicación manteniendo el estado fuera del DOM.
 
-#### Class Component
-
-Este tipo de componentes deben incluir la declaración _extends React.Component_, para crear una herencia y darle los mismos acceso a las funciones de React. También requieren de un método __render()__, para devolver el contenido en un formato similar a HTML (JSX).
-
-```jsx
-class Person extends React.Component{
+* __Class Component__: Este tipo de componentes deben incluir la declaración _extends React.Component_, para crear una herencia y darle los mismos acceso a las funciones de React. También requieren de un método __render()__, para devolver el contenido en un formato similar a HTML (JSX).
+    ```jsx
+    class Person extends React.Component{
     constructor(props){
         super(props)
     }
     render(){
         return <p>{this.props.name}<p>
+    }}
+    ```
+* __Function Component__: Los componentes de función también _devuelven codigo JSX_ y se comportan de manera muy similar a los componentes de clase y, a diferencia de estos, se pueden escribir usando mucho menos código, ademas que son más fáciles de entender.
+    ```jsx
+    function Person(props){
+        return <p>{props.name}</p> 
     }
-}
-```
-
-#### Function Component
-
-Los componentes de función también _devuelven codigo JSX_ y se comportan de manera muy similar a los componentes de clase y, a diferencia de estos, se pueden escribir usando mucho menos código, ademas que son más fáciles de entender.
-
-```jsx
-function Person(props){
-    return <p>{props.name}</p> 
-}
-```
-
-#### Lambda Component 
-
-Los componentes de _función flecha_ proporcionan una sintaxis más concisa, comparados con los componentes tradicionales de React. Son mas fáciles de leer y comprender, ademas se pueden usar en lugar de cualquier otro tipo de componente. 
-
-```jsx
-const Person = ({name}) => <p>{name}</p>
-```
+    ```
+* __Lambda Component__: Los componentes de _función flecha_ proporcionan una sintaxis más concisa, comparados con los componentes tradicionales de React. Son mas fáciles de leer y comprender, ademas se pueden usar en lugar de cualquier otro tipo de componente. 
+    ```jsx
+    const Person = ({name}) => <p>{name}</p>
+    ```
 
 ### Multiplataforma
 

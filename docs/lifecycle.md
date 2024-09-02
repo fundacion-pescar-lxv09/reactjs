@@ -7,17 +7,18 @@ Serie de estados por los cuales pasan los componentes statefull a lo largo de su
 ### Tabla de Contenidos
 
 1. [Montaje](#montaje)
-    * [constructor](#montaje)
-    * [render](#montaje)
-    * [componentDidMount](#montaje)
+    * constructor
+    * render
+    * componentDidMount
 1. [Actualizacion](#actualizacion)
-    * [shouldComponentUpdate](#actualizacion)
-    * [render](#actualizacion)
-    * [componentDidUpdate](#actualizacion)
+    * shouldComponentUpdate
+    * render
+    * componentDidUpdate
 1. [Desmontaje](#desmontaje)
-    * [componentWilUnmount](#desmontaje)
+    * componentWilUnmount
 
 ### Montaje
+
 Es la primera fase del ciclo de vida, en la que se crea el componente. Sabemos que un componente de React representa un elemento del DOM y lo que contiene. En el momento en que ese elemento se pinta en el DOM, aparece visualmente en la página web, decimos que ese componente está montado.
 
 | Metodo | Descripcion |
