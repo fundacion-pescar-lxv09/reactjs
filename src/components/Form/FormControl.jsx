@@ -1,12 +1,12 @@
-const FormControl = ({key, type="text", ...props}) => 
+const FormControl = ({id, type="text", ...props}) => 
 <fieldset className="form-floating m-2">
     <input className="form-control" 
-        id={key} 
-        name={key} 
+        id={id} 
+        name={id} 
         type={type}
-        placeholder={"Ingrese su "+ key } 
+        placeholder={"Ingrese su "+ id} 
         {...props}/>
-    <label htmlFor={key}>{key}</label>
+    <label htmlFor={id}>{id}</label>
 </fieldset>
 
 export default FormControl
