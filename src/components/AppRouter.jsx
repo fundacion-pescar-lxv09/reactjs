@@ -1,8 +1,9 @@
-import Table from './components/Table'
-import Article from './components/Article'
-import List from './components/List'
-import Form from './components/Form'
-import NotFound from './components/NotFound'
+import { Routes, Route } from 'react-router-dom'
+import Table from './Table'
+import Article from './Article'
+import List from './List'
+import Form from './Form'
+import NotFound from './NotFound'
 
 const AppRouter = ({data}) => 
 <Routes>

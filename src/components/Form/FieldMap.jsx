@@ -5,7 +5,7 @@ function FieldMap ({arr}) {
 return (
     headers.map((k,i) => 
     typeof arr[k] === 'object' ? 
-    <FieldMap key={i} array={arr[k]}/> : 
+    <FieldMap key={i} arr={arr[k]}/> : 
     <FormControl key={i} id={k}/>
 ))}
 

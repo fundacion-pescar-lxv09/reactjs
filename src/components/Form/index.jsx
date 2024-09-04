@@ -8,7 +8,7 @@ const Form = ({fn, data, children}) => {
     return(
     <form onSubmit={handleSubmit}>
         <h2>Formulario {section}</h2>
-        { data ? <FieldMap arr={data[0]}/> : children }
+        { data.length ? <FieldMap arr={data[0]}/> : children }
         <button className="btn btn-success | d-block mx-auto">Enviar</button>
     </form>
 )}
