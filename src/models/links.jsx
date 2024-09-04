@@ -11,10 +11,10 @@ export const social = [
 ]
 export const jph = "https://jsonplaceholder.typicode.com"
 export const jphLinks = [
-  { id: "1", url:"/users", text: "Usuarios"},
-  { id: "2", url:"/posts", text: "Publicaciones" },
-  { id: "4", url:"/albums", text: "Albumes" },
-  { id: "5", url:"/todos", text: "Tareas" },
+  { id: "1", url:"users", text: "Usuarios"},
+  { id: "2", url:"posts", text: "Publicaciones" },
+  { id: "4", url:"albums", text: "Albumes" },
+  { id: "5", url:"todos", text: "Tareas" },
 ]
 export const elements = ["table","article","list","form"]
 

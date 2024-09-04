@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 // Modelos de datos
 import { heading } from './models/heading'
@@ -14,32 +14,23 @@ import Article from './components/Article'
 import List from './components/List'
 import Loading from './components/Loading'
 import NotFound from './components/NotFound'
+import { StateContext } from './providers/stateContext'
 
 function App() {
-  const [state, setState] = useState({ url:'', data: []})
-  const set = (key,value) => setState({...state, [key]: value})
-  const setUrl = (url) => set("url", url)
-  const setData = (data) => set("data",data)
-
-  useEffect(() => { 
-    Request(state?.url)
-    .then(({data}) => setData(data))
-    .catch((error) => setData(error))
-  }, [state?.url])
-
+  const { state:{data,section} } = useContext(StateContext)
   return (
     <Router>
-      <Nav links={newLinks()} {...{fn:setUrl, host:jph}}/>
-      <Header {...heading} subtitle={"Tabla de "+jphLinks[0].text}/>       
+      <Nav links={newLinks()} />
+      <Header {...heading} subtitle={"Datos de "+section}/>       
       <section className="container | row p-0 | overflow">{ 
-      state?.data?.length ?
+      data?.length ?
       <Routes>
-        <Route path="table/:table" element={<Table data={state?.data}/>}/>
-        <Route path="article/:table" element={<Article data={state?.data}/>}/>
+        <Route path="table/:table" element={<Table data={data}/>}/>
+        <Route path="article/:table" element={<Article data={data}/>}/>
         <Route path="list/:table" element={
-          <List data={state?.data}/>
+          <List data={data}/>
         }/>
-        <Route path="form/:table" element={<Form data={state?.data}/>}/>
+        <Route path="form/:table" element={<Form data={data}/>}/>
         <Route path="/" element={<h2>Bienvenido</h2>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>:<Loading/> }
