@@ -1,13 +1,10 @@
-import { useContext } from 'react'
 import './App.css'
-import { SearchContext } from './providers/searchContext'
+import Search from './components/Search'
 
 function App() {
-  const { search: {q}, set } = useContext(SearchContext)
   return (
     <>
-      <input type="search" onInput={(e) => set("q", e.target.value)}/>
-      <p>{q}</p>
+      <Search/>
     </>
   )
 }
