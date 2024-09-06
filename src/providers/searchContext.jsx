@@ -20,8 +20,9 @@ export const SearchProvider = ({children}) => {
             bundle:b,
         } = search 
         const url = `${h}/${r}/${e}?api_key=${k}&q=${q}&limit=${l}&offset=${o}&rating=${rtg}&lang=${lng}&bundle=${b}`
-        axios.get(url)
-        .then(res => set("response", res.data))
+        if (/\w+/.test(q)){
+            axios.get(url).then(res => set("response", res.data))
+        }
     }, [search?.q])
     return(
     <SearchContext.Provider value={{search, set}}>
