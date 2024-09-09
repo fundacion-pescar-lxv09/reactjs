@@ -23,7 +23,7 @@ export const SearchProvider = ({children}) => {
         if (/\w+/.test(q)){
             axios.get(url).then(({data}) => set("response", data))
         }
-    }, [search?.q])
+    }, [search?.q, search?.offset])
     return(
     <SearchContext.Provider value={{search, set}}>
         {children}
