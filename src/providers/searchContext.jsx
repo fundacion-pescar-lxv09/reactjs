@@ -21,7 +21,7 @@ export const SearchProvider = ({children}) => {
         } = search 
         const url = `${h}/${r}/${e}?api_key=${k}&q=${q}&limit=${l}&offset=${o}&rating=${rtg}&lang=${lng}&bundle=${b}`
         if (/\w+/.test(q)){
-            axios.get(url).then(res => set("response", res.data))
+            axios.get(url).then(({data}) => set("response", data))
         }
     }, [search?.q])
     return(
