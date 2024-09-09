@@ -8,7 +8,7 @@ function Post({title,username, import_datetime, images:{ original,downsized_smal
     const resize = () => setActive(!active)
     const [{mp4:oVid,url:oUrl}, {mp4:dsVid,url:dsUrl}, {mp4:sVid,url:sUrl}] = [original,downsized_small, fixed_height_small]
     return(
-    <Card className={"post " + active ? "active":""} onClick={resize}>
+    <Card elevation={10} onClick={resize} size={12}>
         <CardMedia component="video" image={active?(oVid||oUrl):(sVid||sUrl||dsVid||dsUrl)} title={title} autoPlay={active} loop={active}/>
         <CardContent>
             <Typography variant="h5">{title ?? "Untitled"}</Typography>
