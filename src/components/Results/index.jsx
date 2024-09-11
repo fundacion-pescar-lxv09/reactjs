@@ -8,13 +8,13 @@ function Results(){
     const {search: {q, response}} = useContext(SearchContext)
     const {data, pagination} = response
     return(
-    <Grid container spacing={2} justifyContent="center" sx={{margin: "auto"}}>
+    <Grid container spacing={2} justifyContent="center" sx={{margin: "auto", minHeight: "90vh"}}>
         <Grid size={12}>
             <Typography variant="h4">Resultados de {q}</Typography>
         </Grid>
         { data && data.map(item => 
-        <Grid size={{xs:12, md:6, lg:4, xl:3}}>
-            <Post key={item.id} {...item}/>
+        <Grid key={item.id} size={{xs:12, md:6, lg:4, xl:3}}>
+            <Post {...item}/>
         </Grid> )}
         <Grid size={12}>
         { pagination ?  <Pagination {...pagination}/> : "No se encontraron resultados" }
