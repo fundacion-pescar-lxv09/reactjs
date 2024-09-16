@@ -13,7 +13,7 @@ export const counterSlice = createSlice({
             state.number -= action.payload || 1
         },
         setNumber: (state, action) => {
-            state.number = action.payload
+            state.number = parseInt(action.payload)
         }
     }
 })
