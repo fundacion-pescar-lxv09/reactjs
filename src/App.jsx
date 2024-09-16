@@ -1,15 +1,14 @@
 import './App.css'
-import Todo from './components/Todo'
-import Counter from './components/Counter'
-import { Profile } from './components/Profile'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './components/Router'
+import { Nav } from './components/Nav'
 
 function App() {
   return(
-    <>
-      <Counter/>
-      <Profile/>
-      <Todo/>
-    </>
+    <BrowserRouter>
+      <Nav/>
+      <Router/>
+    </BrowserRouter>
   )
 }
 
