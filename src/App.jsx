@@ -1,4 +1,5 @@
 import './App.css'
+import Todo from './components/Todo'
 import Counter from './components/Counter'
 import { Profile } from './components/Profile'
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <Counter/>
       <Profile/>
+      <Todo/>
     </>
   )
 }
