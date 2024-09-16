@@ -1,3 +1,5 @@
+import Areas from "../components/Areas";
+
 export const routes = [
     {
         path:["candidatos","candidates","postulantes"],
@@ -8,7 +10,7 @@ export const routes = [
     },
     { 
         path:["departamentos","departments","areas"],
-        element: <h1>Departamentos</h1>
+        element: <Areas/>
     },
     { 
         path:["empleados","employees","trabajadores"],
