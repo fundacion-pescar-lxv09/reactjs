@@ -1,5 +1,6 @@
 import Areas from "../components/Areas";
 import Candidates from "../components/Candidates"
+    import EmployeeList from "../components/Employees/EmployeeList";
 
 export const routes = [
     {
@@ -7,7 +8,7 @@ export const routes = [
         element: <Candidates/> },
     { 
         path:["seleccion","selection","elegidos"],
-        element: <h1>Seleccion</h1>
+        element: <EmployeeList/>
     },
     { 
         path:["departamentos","departments","areas"],
