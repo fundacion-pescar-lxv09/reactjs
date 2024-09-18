@@ -6,6 +6,9 @@ export const areaSlice = createSlice({
     initialState: { areas },
     reducers: {
         insertArea: (state, action) => {
+            const name = action.payload.name.trim()
+            const exists = state.areas.find(({name:n}) => n === name)
+            if (!exists && name !== '') 
             state.areas = [...state.areas, action.payload]
         },
         editArea: (state, action) => {
