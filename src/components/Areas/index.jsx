@@ -3,7 +3,7 @@ import AreaList from "./AreaList";
 
 export default function Areas (){
 return(
-<div className="container | col-md-6 col-xl-4">
+<div className="container | col-md-10 col-xl-8">
     <AreaForm/>
     <AreaList/>
 </div>

@@ -1,5 +1,6 @@
 import { ListGroup, ListGroupItem } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
+import AreaActions from './AreaActions'
 
 export default function AreaList() {
     const { areas } = useSelector(state => state.areas)
@@ -8,6 +9,7 @@ return (
     { areas.map((item,i) => 
         <ListGroupItem key={i}>
             {item.name}
+            <AreaActions id={i}/>
         </ListGroupItem>)}
     </ListGroup>
 )}
