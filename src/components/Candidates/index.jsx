@@ -5,9 +5,9 @@ import { getCandidates } from "../../store/employeeSlice";
 import CandidateList from './CandidateList'
 export default function Candidates(){
     const dispatch = useDispatch()
-    const { loading, candidates, error } = useSelector(state => state.employees)
+    const { loading } = useSelector(state => state.employees)
     useEffect(()=>{
-      dispatch(getCandidates('https://randomuser.me/api/?results=10'))
+      dispatch(getCandidates('https://randomuser.me/api/?results=20'))
     },[])
     return loading ? <Spinner/> : <CandidateList/>
 }
