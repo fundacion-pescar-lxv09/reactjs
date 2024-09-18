@@ -1,9 +1,10 @@
 import Areas from "../components/Areas";
+import Candidates from "../components/Candidates"
 
 export const routes = [
     {
         path:["candidatos","candidates","postulantes"],
-        element: <h1>Candidatos</h1> },
+        element: <Candidates/> },
     { 
         path:["seleccion","selection","elegidos"],
         element: <h1>Seleccion</h1>
