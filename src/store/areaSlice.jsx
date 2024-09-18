@@ -12,8 +12,8 @@ export const areaSlice = createSlice({
             state.areas = [...state.areas, action.payload]
         },
         editArea: (state, action) => {
-            const {index, ...area} = action.payload
-            state.areas[index] = area
+            const {id, ...area} = action.payload
+            state.areas[id] = area
         },
         deleteArea: (state, action) => {
             state.areas = state.areas.filter((_,i) => i !== action.payload)
