@@ -9,7 +9,7 @@ export const employeeSlice = createSlice({
     initialState: employees,
     reducers: {
         selectCandidate: (state, action) => {
-            state.selected.push(state.candidates[action.payload])
+            state.selected = [...state.selected, state.candidates[action.payload.i]]
         },
         removeCandidate: (state, action) => {
             state.selected = state.selected.filter(employee => employee.uuid !== action.payload)
