@@ -34,7 +34,7 @@ Antiguamente solo era posible acceder a algunas funcionalidades como el ciclo de
   function Counter() {
     const [count, setCount] = useState(0);
     const increment = () => setCount(count + 1)
-    return <button onClick={increment}>Clicks {count}</button>
+    return <button onClick={increment}>clicks {count}</button>
   }
   ```
 * __useReducer (`reducer`,`initialArg`,`init`?)__: Acepta un reducer de tipo __(`state`,`action`)=>`newState`__ y devuelve el estado actual emparejado con un _método dispatch_. Permite optimizar el rendimiento para componentes que activan actualizaciones profundas, porque puedes pasar hacia abajo dispatch en lugar de callbacks
@@ -66,14 +66,27 @@ Antiguamente solo era posible acceder a algunas funcionalidades como el ciclo de
   function Timer() {
     const [time, setTime] = useState(0);
     useEffect(() => {
-      const timer = setInterval(()=> setTime(time => time + 1), 1000);
+      const timer = setInterval(() => setTime(time => time + 1), 1000);
       return () => clearInterval(timer);
     },[]);
     return <p>{time} segundos</p>;
   }
   ```
 * __useLayoutEffect(`effect`,`deps`)__: Similar a `useEffect`, pero se ejecuta sincrónicamente después de que _el DOM haya sido actualizado_. `effect` es una función de _efectos secundarios_ y opcionalmente una función de limpieza. deps es un array de dependencias.
-
+  ```jsx
+  import { useState, useLayoutEffect, useRef } from 'react';
+  function Animation() {
+    const titleRef = useRef()
+    useLayoutEffect(() => {
+      window.onresize = () => { 
+        const css = titleRef.current.style
+        css.fontSize = window.innerWidth < 600 ? "15vw" : "5rem",
+        css.transition = "all .5 ease"
+      }
+    },[]);
+    return <h1 ref={titleRef}> Bienvenido </h1>
+  }
+  ```
 ### Contexto
 
 * __useContext (`context`)__: Acepta un objeto de contexto (devuelto por _React.createContext_) y devuelve el contexto actual, determinado por la propiedad value del __<MyContext.Provider>__ ascendentemente más cercano en el árbol al componente que hace la llamada
@@ -97,12 +110,9 @@ Antiguamente solo era posible acceder a algunas funcionalidades como el ciclo de
   ```jsx
   import { useRef, useState } from 'react';
   function Counter() {
-    const ref = useRef(null);
+    const ref = useRef();
     const [value, setValue] = useState('');
-    const onChange = () => {
-      const ctrl = ref.current
-      if (ctrl) setInputValue(ctrl.value)
-    }
+    const onChange = () => setValue(ref.current.value)
     return <input type="number" {...{ref, value, onChange}}/>
   }
   ```
@@ -122,24 +132,27 @@ Antiguamente solo era posible acceder a algunas funcionalidades como el ciclo de
 * __useTransition()__: Marca una transición de estado como no bloqueante. Permite que actualizaciones importantes interrumpan la transición. Retorna un array con una función startTransition y un valor booleano isPending
   ```jsx
   import { useState, useTransition } from 'react';
-  const List({items}) => <ul>{ items.map((item,idx) => <li key={idx}>{item}</li>) }</ul>
-
+  const setArray = (n) => Array.from({ length: n }, (_, i) => i+1);
+  const List = ({ numbers, pow }: Product) => pow.map((p) => 
+  <ul key={p}>
+    { numbers.map(n => <li key={n}>{p}^{n}={p **n}</li>) }
+  </ul> )
   function App() {
     const [isPending, startTransition] = useTransition();
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState<Product | null>(null);
     const handleClick = () => {
       startTransition(() => {
-        const newItems = Array.from({length: 10000}, (_,i) => `Item ${i}`);
-        setItems(newItems);
-      });
-    };
-    return (
-      <div>
-        <button onClick={handleClick}>Load Items</button>
-        {isPending ? <p>Loading...</p> : <List items={items} />}
-      </div>
-    );
-  }
+        const pow = setArray(100);
+        const numbers = setArray(10);
+        setItems({ numbers, pow });
+      })
+    }
+  return (
+    <>
+      <button onClick={handleClick}>Load numbers</button>
+      {isPending ? <p>Loading...</p> : items && <List {...items} />}
+    </>
+  )}
   ```
 
 [volver](../readme.md)
