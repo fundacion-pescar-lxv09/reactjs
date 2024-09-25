@@ -1,0 +1,18 @@
+{
+    "registerType": "autoUpdate",
+    "name": "Gestion de Empleados Fundacion y Actualizaciones",
+    "short_name": "GEFA",
+    "display": [
+        "standalone",
+        "minimal-ui",
+        "fullscreen",
+        "browser"
+    ],
+    "icons": [
+        {
+            "src": "./public/image-128x128.svg",
+            "sizes": "128x128",
+            "type": "svg+xml"
+        }
+    ]
+}
